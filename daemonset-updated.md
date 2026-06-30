@@ -10,7 +10,7 @@ spec:
 ```
 
 Or update via kubectl
-# 1.
+## 1.
 ```
 kubectl -n telegraf patch daemonset telegraf-ds \
   --type='json' \
@@ -28,13 +28,13 @@ kubectl -n telegraf patch daemonset telegraf-ds \
   ]'
 ```
 
-# 2. Create secrets for TC token
+## 2. Create secrets for TC token
 ```
 kubectl -n influxdb3 create secret generic telegraf-controller-token \
 --from-literal=token="tc-apiv1_12345678" \
 --dry-run=client -o yaml | kubectl apply -f -
 ```
-# 3. Add TELEGRAF_CONTROLLER_TOKEN to daemonset config
+## 3. Add TELEGRAF_CONTROLLER_TOKEN to daemonset config
 ```
 kubectl -n influxdb3 patch ds/telegraf-ds \
 --type='json' \
