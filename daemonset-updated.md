@@ -12,7 +12,7 @@ spec:
 Or update via kubectl
 ## 1.
 ```
-kubectl -n telegraf patch daemonset telegraf-ds \
+kubectl -n influxdb3 patch daemonset telegraf-ds \
   --type='json' \
   -p='[
     {
@@ -53,4 +53,8 @@ kubectl -n influxdb3 patch ds/telegraf-ds \
      }
    }
  ]'
+```
+## 4. Restart to pick up the changes
+```
+kubectl rollout restart -n influxdb3 ds/telegraf-ds
 ```
